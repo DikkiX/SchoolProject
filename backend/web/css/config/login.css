@@ -1,0 +1,16 @@
+.bg-image {
+    background-image: url("https://dijkstraenvanpuffelen.nl/wp-content/uploads/2022/09/Team-Dijkstra-van-puffelen4-scaled.jpg");
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: block;
+}
