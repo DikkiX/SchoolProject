@@ -33,6 +33,7 @@ return [
         'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\PhpManager'
     ],
     'user' => [
+        'class' => 'mdm\admin\models\User'
         'identityClass' => 'mdm\admin\models\User',
         'loginUrl' => ['admin/user/login'],
         'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
