@@ -7,10 +7,14 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'authManager' => [
-            'class' => 'yii\rbac\DbManager',
+            'class' => 'yii\rbac\DBManager',
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
+        ],
+        'user' => [
+            'identityClass' => 'mdm\admin\models\User',
+            'loginUrl' => ['admin/user/login'],
         ],
     ],
 
@@ -26,18 +30,6 @@ return [
         ]
         ],
 ],
-
-    'components' => [
-        
-    'authManager' => [
-        'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\PhpManager'
-    ],
-    'user' => [
-        'identityClass' => 'mdm\admin\models\User',
-        'loginUrl' => ['admin/user/login'],
-        'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
-    ],
-]
     
 
 ];
