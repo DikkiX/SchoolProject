@@ -7,8 +7,11 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager',
-            'defaultRoles' => ['admin', 'author'],
+            'class' => 'yii\rbac\DBManager',
+            // 'defaultRoles' => ['admin', 'author'],
+            // 'itemFile' => 'vendor\yiisoft\yii2\rbac\item.php', //Default path to items.php | NEW CONFIGURATIONS
+            // 'assignmentFile' => 'rbac\assignments.php', //Default path to assignments.php | NEW CONFIGURATIONS
+            // 'ruleFile' => 'rbac\rules.php', //Default path to rules.php | NEW CONFIGURATIONS
         ],
         'cache' => [
             'class' => \yii\caching\FileCache::class,
