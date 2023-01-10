@@ -49,8 +49,6 @@ return [
         */
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
-            'class' => 'yii\rbac\PhpManager',
-            'defaultRoles' => ['guest'],
         ]
     ],
     'params' => $params,
