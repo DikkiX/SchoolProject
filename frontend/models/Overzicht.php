@@ -3,10 +3,6 @@
 namespace frontend\models;
 
 use Yii;
-use kartik\date\DatePicker;
-use yii\helpers\ArrayHelper;
-
-
 
 /**
  * This is the model class for table "overzicht".
@@ -14,7 +10,7 @@ use yii\helpers\ArrayHelper;
  * @property int $ID
  * @property string $Datum
  * @property int $Klanten_id
- * @property int $Medewerker
+ * @property string $Medewerker
  * @property string $Activiteit
  * @property int $Uren
  * @property string $Declarabel
@@ -40,9 +36,10 @@ class Overzicht extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Datum', 'Klanten_id', 'Medewerker', 'Activiteit', 'Uren', 'Declarabel',  'Project'], 'required'],
+            [['Datum', 'Klanten_id', 'Medewerker', 'Activiteit', 'Uren', 'Declarabel', 'Bonusmwr', 'Opmerkingen', 'Project'], 'required'],
             [['Datum'], 'safe'],
-            [['Klanten_id', 'Medewerker', 'Uren', 'Bonusmwr'], 'integer'],
+            [['Klanten_id', 'Uren', 'Bonusmwr'], 'integer'],
+            [['Medewerker'], 'string', 'max' => 20],
             [['Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'string', 'max' => 999],
             [['Klanten_id'], 'exist', 'skipOnError' => true, 'targetClass' => Klanten::class, 'targetAttribute' => ['Klanten_id' => 'ID']],
         ];

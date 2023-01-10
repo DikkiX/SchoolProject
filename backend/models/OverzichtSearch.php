@@ -17,8 +17,8 @@ class OverzichtSearch extends Overzicht
     public function rules()
     {
         return [
-            [['ID', 'Klanten_id', 'Medewerker', 'Uren', 'Bonusmwr'], 'integer'],
-            [['Datum', 'Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'safe'],
+            [['ID', 'Klanten_id', 'Uren', 'Bonusmwr'], 'integer'],
+            [['Datum', 'Medewerker', 'Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'safe'],
         ];
     }
 
@@ -61,12 +61,12 @@ class OverzichtSearch extends Overzicht
             'ID' => $this->ID,
             'Datum' => $this->Datum,
             'Klanten_id' => $this->Klanten_id,
-            'Medewerker' => $this->Medewerker,
             'Uren' => $this->Uren,
             'Bonusmwr' => $this->Bonusmwr,
         ]);
 
-        $query->andFilterWhere(['like', 'Activiteit', $this->Activiteit])
+        $query->andFilterWhere(['like', 'Medewerker', $this->Medewerker])
+            ->andFilterWhere(['like', 'Activiteit', $this->Activiteit])
             ->andFilterWhere(['like', 'Declarabel', $this->Declarabel])
             ->andFilterWhere(['like', 'Opmerkingen', $this->Opmerkingen])
             ->andFilterWhere(['like', 'Project', $this->Project]);

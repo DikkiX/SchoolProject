@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'ID',
             'Datum',
-            'Klantennummer',
+            'Klanten_id',
             'Medewerker',
             'Activiteit',
             'Uren',

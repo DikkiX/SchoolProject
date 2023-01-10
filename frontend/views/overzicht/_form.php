@@ -48,7 +48,7 @@ use frontend\models\Klanten;
 
     <div class="form-group">
         <div class="d-grid gap-2 mt-4">
-        <?= Html::submitButton('Opslaan', ['class' => 'btn btn-warning']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-warning']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

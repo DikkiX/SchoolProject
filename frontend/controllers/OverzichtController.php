@@ -7,10 +7,6 @@ use frontend\models\OverzichtSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use mPdf;
-
-
 
 /**
  * OverzichtController implements the CRUD actions for Overzicht model.
@@ -22,17 +18,6 @@ class OverzichtController extends Controller
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
-        ];
         return array_merge(
             parent::behaviors(),
             [
@@ -44,7 +29,6 @@ class OverzichtController extends Controller
                 ],
             ]
         );
-        
     }
 
     /**
@@ -147,36 +131,4 @@ class OverzichtController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    //MPDF extension functie uitprinten
-    public function actionGenPdf($id)
-    {
-        $pdf_content = $this->renderPartial('view-pdf', [
-            'model' => $this->findModel($id),
-        ]);
-
-        $mpdf = new \Mpdf\Mpdf();
-        $mpdf->WriteHTML($pdf_content);
-        $mpdf->output();
-    }
-
-    //MPDF extension functie bon
-    public function actionBon($id)
-    {
-        return $this->renderPartial('view-pdf', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-     //Functie voor FPDF extension
-     public function actionExportToPdf($model)
-     {
-         $data = $model::getExportData();
- 
-         return $this->render($data['exportFile'], [
-             'data'=> $data['data'],
-             ]);
- 
- 
-     }
 }
