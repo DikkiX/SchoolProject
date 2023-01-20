@@ -4,16 +4,9 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var frontend\models\Overzicht $model */
-
-$this->title = 'Update Overzicht: ' . $model->ID;
-$this->params['breadcrumbs'][] = ['label' => 'Overzichts', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->ID, 'url' => ['view', 'ID' => $model->ID]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Bijwerken activiteit: ' . $this->title = $model->Medewerker;
 ?>
 <div class="overzicht-update">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

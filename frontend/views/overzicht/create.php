@@ -7,6 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Maak nieuwe registratie';
 ?>
+
 <div class="overzicht-create">
 
     <h1><?= Html::encode($this->title) ?></h1>

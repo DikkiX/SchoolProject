@@ -39,7 +39,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
     
         ];   
-    }
+    }if ( Yii::$app->user->can('admin') ){
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -50,10 +50,7 @@ AppAsset::register($this);
                 'label' => 'Gebruikers Interface',
                 'items' => [
                     ['label' => 'Gebruikers', 'url' => '/Schoolproject/backend/web/index.php?r=admin/user'],
-                     ['label' => 'Route', 'url' => '/Schoolproject/backend/web/index.php?r=admin/route'],
-                     ['label' => 'Permissie', 'url' => '/Schoolproject/backend/web/index.php?r=admin/permission'],
-                     ['label' => 'menu', 'url' => '/Schoolproject/backend/web/index.php?r=admin/menu'],
-                     ['label' => 'Rollen', 'url' => '/Schoolproject/backend/web/index.php?r=admin/role'],
+                     ['label' => 'gebruikers aanmaken', 'url' => '/Schoolproject/backend/web/index.php?r=admin/user/signup'],
                      ['label' => 'Assignments', 'url' => '/Schoolproject/backend/web/index.php?r=admin/assignment'],
 
 
@@ -61,7 +58,7 @@ AppAsset::register($this);
                 ],
 
                 
-    ]);
+    ]);};
     if (Yii::$app->user->isGuest) {
         echo Html::tag('div',Html::a('Login',['/admin/user/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
@@ -79,7 +76,7 @@ AppAsset::register($this);
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            'links' => isset($this->params['']) ? $this->params[''] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>

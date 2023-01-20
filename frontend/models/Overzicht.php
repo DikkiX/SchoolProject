@@ -14,7 +14,6 @@ use Yii;
  * @property string $Activiteit
  * @property int $Uren
  * @property string $Declarabel
- * @property int $Bonusmwr
  * @property string $Opmerkingen
  * @property string $Project
  *
@@ -36,9 +35,9 @@ class Overzicht extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Datum', 'Klanten_id', 'Medewerker', 'Activiteit', 'Uren', 'Declarabel', 'Bonusmwr', 'Opmerkingen', 'Project'], 'required'],
+            [['Datum', 'Klanten_id', 'Medewerker', 'Activiteit', 'Uren', 'Declarabel', 'Opmerkingen', 'Project'], 'required'],
             [['Datum'], 'safe'],
-            [['Klanten_id', 'Uren', 'Bonusmwr'], 'integer'],
+            [['Klanten_id', 'Uren'], 'integer'],
             [['Medewerker'], 'string', 'max' => 20],
             [['Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'string', 'max' => 999],
             [['Klanten_id'], 'exist', 'skipOnError' => true, 'targetClass' => Klanten::class, 'targetAttribute' => ['Klanten_id' => 'ID']],
@@ -58,7 +57,6 @@ class Overzicht extends \yii\db\ActiveRecord
             'Activiteit' => 'Activiteit',
             'Uren' => 'Uren',
             'Declarabel' => 'Declarabel',
-            'Bonusmwr' => 'Bonusmwr',
             'Opmerkingen' => 'Opmerkingen',
             'Project' => 'Project',
         ];

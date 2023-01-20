@@ -17,11 +17,11 @@ class SignupCest
     public function signupWithEmptyFields(FunctionalTester $I)
     {
         $I->see('Signup', 'h1');
-        $I->see('Please fill out the following fields to signup:');
+        $I->see('Vul onderstaande gegevens in om een nieuwe gebruiker aan te maken:');
         $I->submitForm($this->formId, []);
-        $I->seeValidationError('Username cannot be blank.');
+        $I->seeValidationError('Gebruikersnaam mag niet leeg zijn.');
         $I->seeValidationError('Email cannot be blank.');
-        $I->seeValidationError('Password cannot be blank.');
+        $I->seeValidationError('Wachtwoord mag niet leeg zijn.');
 
     }
 
@@ -34,8 +34,8 @@ class SignupCest
             'SignupForm[password]'  => 'tester_password',
         ]
         );
-        $I->dontSee('Username cannot be blank.', '.invalid-feedback');
-        $I->dontSee('Password cannot be blank.', '.invalid-feedback');
+        $I->dontSee('Gebruikersnaam mag niet leeg zijn', '.invalid-feedback');
+        $I->dontSee('Wachtwoord mag niet leeg zijn', '.invalid-feedback');
         $I->see('Email is not a valid email address.', '.invalid-feedback');
     }
 

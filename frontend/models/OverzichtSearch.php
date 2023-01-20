@@ -17,8 +17,8 @@ class OverzichtSearch extends Overzicht
     public function rules()
     {
         return [
-            [['ID', 'Klanten_id', 'Uren', 'Bonusmwr'], 'integer'],
-            [['Datum', 'Medewerker', 'Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'safe'],
+            [['ID', 'Klanten_id', 'Medewerker', 'Uren', 'Bonusmwr'], 'integer'],
+            [['Datum', 'Activiteit', 'Declarabel', 'Opmerkingen', 'Project'], 'safe'],
         ];
     }
 
@@ -47,6 +47,12 @@ class OverzichtSearch extends Overzicht
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        //Session voor Fpdf extension op reserveringpagina
+        $_SESSION['exportData'] = new ActiveDataProvider([
+            'query' => $query,
+            'sort' => false,
+
+        ]);
 
         $this->load($params);
 
@@ -56,21 +62,40 @@ class OverzichtSearch extends Overzicht
             return $dataProvider;
         }
 
+        //FPDF code extension
+        unset($_SESSION['exportData']);
+
+        $_SESSION['exportData'] = $dataProvider;
+
         // grid filtering conditions
         $query->andFilterWhere([
             'ID' => $this->ID,
             'Datum' => $this->Datum,
             'Klanten_id' => $this->Klanten_id,
+            'klanten.klantennaam' => $this->klanten,
+            'Medewerker' => $this->Medewerker,
             'Uren' => $this->Uren,
-            'Bonusmwr' => $this->Bonusmwr,
         ]);
 
-        $query->andFilterWhere(['like', 'Medewerker', $this->Medewerker])
-            ->andFilterWhere(['like', 'Activiteit', $this->Activiteit])
+        $query->andFilterWhere(['like', 'Activiteit', $this->Activiteit])
             ->andFilterWhere(['like', 'Declarabel', $this->Declarabel])
             ->andFilterWhere(['like', 'Opmerkingen', $this->Opmerkingen])
             ->andFilterWhere(['like', 'Project', $this->Project]);
 
         return $dataProvider;
     }
+
+     //FPDF function
+     public static function getExportData() 
+     {
+         $data = [
+                 'data'=>$_SESSION['exportData'],
+                 'fileName'=>'Report', 
+                 'title'=>'Report',
+                 'exportFile'=>'/overzicht/exportoverzicht',
+             ];
+
+         return $data;
+
+     }
 }

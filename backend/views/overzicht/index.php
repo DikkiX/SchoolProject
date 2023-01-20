@@ -36,15 +36,32 @@ $this->title = 'Overzicht';
             ['class' => 'yii\grid\SerialColumn'],
 
             'ID',
-            'Datum',
-            'Klanten_id',
+            [
+                'attribute' => 'Datum',
+                'label' => 'Datum',
+                'format' => 'datetime',
+                'value' => 'Datum',
+                'filter' => \cgsmith\flatpickr\FlatpickrWidget::widget(
+                    [
+                        'model' => $searchModel,
+                        'attribute' => 'Datum',
+                        'flatpickrConfig' => [
+                            'enableTime' => false,
+                            'dateFormat' => 'Y-m-d',
+                            'altInput' => true,
+                            'altFormat' => 'F j, Y',
+                        ],
+                    ]
+                )
+            ],
+            'klanten.klantennaam',
             'Medewerker',
             'Activiteit',
-            //'Uren',
-            //'Declarabel',
-            //'Bonusmwr',
-            //'Opmerkingen',
-            //'Project',
+            'Uren',
+            'Declarabel',
+            'Opmerkingen',
+            'Project',
+            'Bonusmwr',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Overzicht $model, $key, $index, $column) {

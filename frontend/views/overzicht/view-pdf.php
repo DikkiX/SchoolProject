@@ -19,7 +19,6 @@ $this->title = $model->ID;
             'Activiteit',
             'Uren',
             'Declarabel',
-            'Bonusmwr',
             'Opmerkingen',
             'Project',
         ],

@@ -6,8 +6,6 @@ use yii\helpers\Html;
 /** @var backend\models\Klanten $model */
 
 $this->title = 'Nieuwe Klant';
-$this->params['breadcrumbs'][] = ['label' => 'Klantens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row justify-content-center">
   <div class="col-lg-6 col-md-8 col-sm-12">

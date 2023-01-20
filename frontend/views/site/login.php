@@ -29,12 +29,11 @@ use promocat\twofa\widgets\TwoFaQr;
           <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
             <?= $form->field($model, 'username')->textInput(['autofocus' => true], ) ?>  
             <?= $form->field($model, 'password')->passwordInput() ?>
-            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+            <label>
+    <input style="vertical-align: middle" type="checkbox" checked="checked" name="remember"> Onthoud mij
+  </label>
               <div>
                 Wachtwoord vergeten? <?= Html::a('Opnieuw instellen', ['site/request-password-reset']) ?>
-              </div>
-              <div>
-                Nieuwe verificatie mail nodig? <?= Html::a('Opnieuw versturen', ['site/resend-verification-email']) ?>
               </div>
 
             </div>

@@ -6,9 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var backend\models\Klanten $model */
 
-$this->title = $model->ID;
-$this->params['breadcrumbs'][] = ['label' => 'Klantens', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Bekijken klantgegevens: ' . $this->title = $model->klantennaam;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="row justify-content-center">
@@ -25,8 +23,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'ID' => $model->ID], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'ID' => $model->ID], [
+        <?= Html::a('Bijwerken', ['update', 'ID' => $model->ID], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Verwijderen', ['delete', 'ID' => $model->ID], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
